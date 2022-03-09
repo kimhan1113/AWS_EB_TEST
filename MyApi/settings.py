@@ -111,7 +111,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'admin',
+            'NAME': 'deploy-aws',
             'HOST': os.environ.get('RDS_HOST'),
             'USER': 'admin',
             'PASSWORD': os.environ.get('RDS_PASSWORD'),
