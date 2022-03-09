@@ -103,7 +103,7 @@ WSGI_APPLICATION = 'MyApi.wsgi.application'
 #     }
 # }
 
-if DEBUG:
+if 'RDS_HOSTNAME' in os.environ:
 
     default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
@@ -113,8 +113,8 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'deploy-aws',
-            'HOST': os.environ.get('RDS_HOST'),
+            'NAME': 'deploy_aws',
+            'HOST': os.environ.get('RDS_HOSTNAME'),
             'USER': 'admin',
             'PASSWORD': os.environ.get('RDS_PASSWORD'),
             'PORT': '3306',
