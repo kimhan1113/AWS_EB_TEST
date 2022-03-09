@@ -173,7 +173,7 @@ REST_AUTH_SERIALIZERS = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': 'C:/Users/Python/Desktop/MyApi',
+        'LOCATION': '/var/tmp/django_cache',
     }
 }
 
