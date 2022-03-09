@@ -22,7 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+
+if os.environ.get('DEBUG') == "False":
+    DEBUG = False
+else:
+    DEBUG = True
+# DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1', os.environ.get('EB_HOST')]
 
@@ -105,8 +110,8 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'luckyfriends',
-            'HOST': 'awsdj.cy0isg7snq4k.ap-northeast-2.rds.amazonaws.com',
+            'NAME': 'aws',
+            'RDS_HOST': os.environ.get('RDS_HOST'),
             'user': 'admin',
             'PASSWORD': os.environ.get('RDS_PASSWORD'),
             'PORT': '3306',
