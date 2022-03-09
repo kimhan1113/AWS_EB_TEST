@@ -102,6 +102,7 @@ WSGI_APPLICATION = 'MyApi.wsgi.application'
 # }
 
 if DEBUG:
+
     default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
     DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
@@ -111,8 +112,8 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'aws',
-            'RDS_HOST': os.environ.get('RDS_HOST'),
-            'user': 'admin',
+            'HOST': os.environ.get('RDS_HOST'),
+            'USER': 'admin',
             'PASSWORD': os.environ.get('RDS_PASSWORD'),
             'PORT': '3306',
         }
